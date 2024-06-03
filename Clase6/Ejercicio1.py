@@ -4,10 +4,10 @@ class Empleado():
         self.nombre = []
         self.__salario = []
         self.fechaInicio = []
-        self.aumentoSalario=[]
+        self.aumentoSalario=0
 
     def __str__(self):
-        return print('{} su fecha de ingreso es {}, su salario {} y el aumento de su salario sera '.format(self.nombre, self.fechaInicio, self.salario, self.aumentoSalario))
+        return '{} su fecha de ingreso es {}, su salario {} y el aumento de su salario sera {}'.format(self.nombre, self.fechaInicio, self.salario, self.aumentoSalario)
     
     @property
     def salario(self):
@@ -24,7 +24,7 @@ class Empleado():
         self.salario=salario
         self.fechaInicio=fechaInicio
         antiguedad= 2024-self.fechaInicio[2]
-        self.aumentoSalario= salario*antiguedad
+        self.aumentoSalario= int(salario)*antiguedad
 
     
        
@@ -41,11 +41,13 @@ class Institucion():
         Institucion.empleados.append(e)
     
     def mostrarEmpleados(self):
-        for e in Institucion.empleados:
-            print(e)
-            print('Calculo de sueldo: ', empleado.calcularAumento)
+        for empleado in Institucion.empleados:
+            print(empleado)
+            
 
 
-empleado = Empleado('Pedro','1000', (10,11,2006))
+empleado = Empleado()
+empleado.cargarEmpleado('Pedro','1000', (10,11,2006))
 institucion= Institucion()
 institucion.agregarEmpleado(empleado)
+institucion.mostrarEmpleados()
